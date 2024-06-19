@@ -3,6 +3,6 @@ Web bán hàng
 
 Công nghệ sử dụng:
 
-Backend: Laravel frameword
+Backend: Laravel framework
 
 Frontend: html, css, javascript
