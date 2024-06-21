@@ -41,10 +41,15 @@
 					<td><img width="150px" class="img-responsive" src="{{asset('storage/images/products/'.$item->options->img)}}"></td>
 					<td>{{$item->name}}</td>
 					<td>
+						{{-- Thuật toán:
+							    B1: Tạo biến $count ngoài vòng lặp 
+								B2: Sử dụng biến $count trong vòng lặp và tăng $count lên một sau mỗi lần lặp để tạo ra các class khác nhau nhằm mục đích onclick được nhiều nút và thay đổi số lượng và giá tiền
+								B3: Viết mã javascript để triển khai onclick
+								--}}
 						<div class="quatity-number">
-							<span style="border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
+							<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
 							<input style="text-align: center; width: 80px;" disabled type="text" class="numCart-{{$count}}" value="{{$item->qty}}"></input>
-							<span style="border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
+							<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
 							<div style="display: none;">{{$count++}}</div>
 						</div>
 						{{-- <div class="form-group">

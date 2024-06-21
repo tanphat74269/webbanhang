@@ -43,12 +43,17 @@
 						<img height="150px" src="{{asset('storage/images/products/'.$item->img)}}" class="card-img-top" alt="...">
 						<div class="card-body">
 						  <h5 class="card-title">{{$item->prod_name}}</h5>
-						  <p style="color: #ee4d2d; font-size: 18px;" class="card-text">{{number_format($item->price,0,',','.')}}</p>
+						  <p style="color: #ee4d2d; font-size: 18px;" class="card-text">{{number_format($item->price,0,',','.')}} đ</p>
 						</div>
 					</div>
 				</a>
 				@endforeach
 			</div>    
+		</div>
+	</div>
+	<div class="row text-center" style="margin-left:465px; margin-top: 20px;">
+		<div class="col-md-12" style="">
+			{{$news->onEachSide(1)->links()}}
 		</div>
 	</div>				
 @stop	

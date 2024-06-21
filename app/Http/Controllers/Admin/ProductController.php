@@ -13,10 +13,12 @@ use DB;
 
 class ProductController extends Controller
 {
-    public function getProduct() {
+    public function getProduct(Request $request) {
+        $data['page'] = $request->page;
+        
         $data['productlist'] = DB::table('products')
                                ->join('categories', 'products.prod_cate', '=', 'categories.cate_id')
-                               ->orderBy('prod_id', 'desc')->get();
+                               ->orderBy('prod_id', 'desc')->paginate(5);
         return view('backend.product', $data);
     }
 

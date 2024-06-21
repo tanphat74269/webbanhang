@@ -298,7 +298,7 @@
 			<div class="container-fluid">
 				<form class="d-flex" role="search" action="{{asset('search/')}}" method="get">
 				  <input name="result" style="width: 500px;" class="form-control me-2" type="search" placeholder="Bạn tìm gì hôm nay" aria-label="Search">
-				  <button style="margin-left: 5px; cursor: pointer; background: rgb(153, 230, 165); color:rgb(37, 38, 33);" class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+				  <button style="margin-left: 5px; cursor: pointer; background: rgb(216, 248, 220); color:rgb(37, 38, 33);" class="btn btn-outline-success" type="submit">Tìm kiếm</button>
 				</form>
 			</div>
 		</div>

@@ -9,7 +9,7 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-xs-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col-md-12 col-lg-8">
 				
 				<div class="panel panel-primary">
 					<div class="panel-heading">Sửa sản phẩm</div>
@@ -17,7 +17,7 @@
 						@include('errors.note')
 						<form method="post" enctype="multipart/form-data">
 							<div class="row" style="margin-bottom:40px">
-								<div class="col-xs-8">
+								<div class="col-xs-12">
 									<div class="form-group" >
 										<label>Tên sản phẩm</label>
 										<input required type="text" name="name" class="form-control" value="{{$product->prod_name}}">
@@ -33,7 +33,7 @@
 									</div>
 									<div class="form-group" >
 										<label>Miêu tả</label>
-										<textarea required name="description">{{$product->description}}</textarea>
+										<textarea id="summernote" type="text" required name="description">{{$product->description}}</textarea>
 									</div>
 									<div class="form-group" >
 										<label>Danh mục</label>

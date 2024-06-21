@@ -16,9 +16,9 @@
 		<div style="clear: both;"></div>
 	</div>
 
-	<div id="product-detail">
+	<div id="product-detail" style="margin-top: 40px;">
 		<h3 style="color:black;">Mô tả sản phẩm</h3>
-		<p class="text-justify" style="color: black; font-size: 20px;">{!! $item->description !!}</p>
+		<p style="margin-top: -10px;" class="text-justify" style="color: black; font-size: 20px;">{!! $item->description !!}</p>
 	</div>
 
 

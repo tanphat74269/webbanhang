@@ -20,32 +20,39 @@
 								<table class="table table-bordered" style="margin-top:20px;">				
 									<thead>
 										<tr class="bg-primary">
-											<th style="text-align: center;">STT</th>
+											<th width="3%" style="text-align: center;">STT</th>
 											<th width="30%">Tên Sản phẩm</th>
 											<th width="12%">Giá sản phẩm</th>
-											<th width="20%">Ảnh sản phẩm</th>
+											<th width="13%">Ảnh sản phẩm</th>
 											<th width="10%">Danh mục</th>
-											<th style="text-align: center;">Mô tả sản phẩm</th>
+											{{-- <th style="text-align: center;">Mô tả sản phẩm</th> --}}
 											<th width="3%" style="text-align: center;">Sửa</th>
 											<th width="3%" style="text-align: center;">Xóa</th>
 										</tr>
 									</thead>
 									<tbody>
 										@php
-											$count = 1;
+											
+											if($page == '') {
+												$count = 1;
+											} else {
+												$count = $page*5 - 4; // quy luat
+											}
+											
 										@endphp
+										
 										@foreach ($productlist as $product)
 										<tr>
 											<td style="text-align: center;">{{$count++}}</td>
 											<td>{{$product->prod_name}}</td>
-											<td>{{number_format($product->price,0,',','.')}} VND</td>
+											<td>{{number_format($product->price,0,',','.')}} đ</td>
 											<td>
-												<img height="150px" src="{{asset('storage/images/products/'.$product->img)}}" class="thumbnail">
+												<img style="" height="150px" width="150px" src="{{asset('storage/images/products/'.$product->img)}}" class="thumbnail">
 											</td>
 											<td>{{$product->cate_name}}</td>
-											<td style="text-align: center;">
+											{{-- <td style="text-align: center;">
 												<a href="" style="text-decoration: underline;">Xem chi tiết</a>
-											</td>
+											</td> --}}
 											<td>
 												<a href="{{asset('admin/product/edit/'.$product->prod_id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i><span class="glyphicon glyphicon-edit"></span></a>
 											</td>
@@ -64,4 +71,10 @@
 			</div>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
+
+	<div class="row text-center" style="margin-left:250px; margin-top: 20px;">
+		<div class="col-md-12" style="">
+			{{$productlist->onEachSide(1)->links()}}
+		</div>
+	</div>
 @stop	

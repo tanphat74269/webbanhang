@@ -8,6 +8,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/datepicker3.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('./summernote/summernote-lite.min.css')}}">
+
+
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="js/lumino.glyphs.js"></script>
 <script>
@@ -55,6 +58,8 @@
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
+
+	<script src="{{asset('./summernote/summernote-lite.min.js')}}"></script>
 	<script>
 		$('#calendar').datepicker({
 		});
@@ -73,6 +78,13 @@
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
 	</script>	
+	<script>
+		$('#summernote').summernote({
+		  placeholder: 'Đoạn văn mô tả',
+		  tabsize: 2,
+		  height: 200
+		});
+	</script>
 </body>
 
 </html>

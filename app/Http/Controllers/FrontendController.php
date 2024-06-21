@@ -11,7 +11,7 @@ use App\Models\Models\Comment;
 class FrontendController extends Controller
 {
     public function getHome() {
-        $data['news'] = Product::orderBy('prod_id', 'desc')->take(8)->get();
+        $data['news'] = Product::orderBy('prod_id', 'desc')->paginate(8);
         return view('frontend.home', $data);
     }
 
@@ -42,7 +42,7 @@ class FrontendController extends Controller
         $result = $request->result;
         $data['keyword'] = $result;
         $result = str_replace(' ', '%', $result);
-        $data['items'] = Product::where('prod_name', 'like', '%'.$result.'%')->get();
+        $data['items'] = Product::where('prod_name', 'like', '%'.$result.'%')->paginate(8);
 
         return view('frontend.search', $data);
     }
