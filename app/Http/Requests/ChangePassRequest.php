@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCateRequest extends FormRequest
+class ChangePassRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,13 @@ class AddCateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'unique:categories,cate_name'
+            'confirm_new_password'=>'same:new_password',
         ];
     }
 
     public function messages() {
         return [
-            'name.unique'=>'Tên danh mục đã có trong trang web. Vui lòng chọn tên khác!'
+            'confirm_new_password.same' => 'Mật khẩu nhập lại không trùng khớp'
         ];
     }
 }

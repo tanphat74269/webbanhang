@@ -7,7 +7,6 @@
 				<h1 class="page-header">Sản phẩm</h1>
 			</div>
 		</div><!--/.row-->
-		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-8">
 				
@@ -29,7 +28,7 @@
 									<div class="form-group" >
 										<label>Ảnh sản phẩm</label>
 										<input id="img" type="file" name="img" class="form-control" onchange="changeImg(this)">
-					                    <img id="avatar" class="thumbnail" width="300px" src="{{asset('storage/images/products/'.$product->img)}}">
+					                    <img id="avatar" class="thumbnail" height="300px" width="300px" src="{{asset('storage/images/products/'.$product->img)}}">
 									</div>
 									<div class="form-group" >
 										<label>Miêu tả</label>

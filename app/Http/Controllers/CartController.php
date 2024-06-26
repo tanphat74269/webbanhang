@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Cart;
-use App\Models\Models\Product;
+use App\Models\Product;
+use App\Models\Order;
 use Mail;
+use Auth;
+use DB;
 
 class CartController extends Controller
 {
-    public function getAddCart($id) {
+    public function postAddCart(Request $request, $id) {
+        $qty = $request->qty;
         $product = Product::find($id);
-        Cart::add(['id'=>$id, 'name'=>$product->prod_name, 'qty'=>1, 'price'=>$product->price, 'weight'=>'550','options'=>['img'=>$product->img]]);
-        
+        Cart::add(['id'=>$id, 'name'=>$product->prod_name, 'qty'=>$qty, 'price'=>$product->price, 'weight'=>'550','options'=>['img'=>$product->img]]);
         return back();
     }
 
@@ -36,21 +39,26 @@ class CartController extends Controller
         Cart::update($request->rowId, $request->qty);
     }
 
-    public function postComplete(Request $request) {
-        $data['info'] = $request->all();
-        $data['cart'] = Cart::content();
-        $data['total'] = Cart::total();        
-
-        $email = $request->email;
-        Mail::send('frontend.email', $data, function($message) use ($email) {
-            $message->from('phuynhtan375@gmail.com', 'phat');
-            $message->to($email, $email);
-            // $message->cc();
-            $message->subject('Xác nhận hóa đơn mua hàng');
-        });
+    public function postComplete(Request $request) {      
+        $items = Cart::content();
+        // Thêm đơn hàng vào database
+        foreach($items as $item) {
+            $orders = new Order;
+            $orders->order_user = Auth::user()->id;
+            $product = DB::table('products') // Dạng mảng
+                        ->select('prod_id')
+                        ->where('prod_name', $item->name)->get();
+            $orders->order_product = $product[0]->prod_id;
+            $orders->quantity = $item->qty;
+            $orders->address = $request->address;
+            $orders->sdt = $request->sdt;
+            $orders->name_customer = $request->name;
+            $orders->ngaymua = date("Y-m-d");
+            $orders->save();
+        }
 
         Cart::destroy();
-        return redirect('complete');
+        return redirect('cart/complete');
     }
 
     public function getComplete() {

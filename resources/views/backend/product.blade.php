@@ -10,7 +10,6 @@
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
-				
 				<div class="panel panel-primary">
 					<div class="panel-heading">Danh sách sản phẩm</div>
 					<div class="panel-body">
@@ -32,15 +31,12 @@
 									</thead>
 									<tbody>
 										@php
-											
-											if($page == '') {
-												$count = 1;
+											if($page == '') { // Đánh STT cho table
+												$count = 1; 
 											} else {
-												$count = $page*5 - 4; // quy luat
+												$count = $page*5 - 4; // Quy luật
 											}
-											
 										@endphp
-										
 										@foreach ($productlist as $product)
 										<tr>
 											<td style="text-align: center;">{{$count++}}</td>

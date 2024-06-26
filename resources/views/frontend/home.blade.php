@@ -35,8 +35,32 @@
 	</div>
 	<div id="wrap-inner">
 		<div class="products">
+			<h3 style="color: black;">Sản phẩm bán chạy</h3>
+			<div class="products-list row">
+				@php
+					$count = 0;
+				@endphp
+				@foreach ($productslist as $item)
+				@if ($count == 8)
+					@php
+						break;
+					@endphp
+				@endif
+				<a style="margin-left: 12px; margin-bottom: 12px; color: black; text-decoration: none;" href="{{asset('detail/'.explode(',', $item->prod_id)[0].'/'.explode(',', $item->prod_slug)[0].'.html')}}">
+					<div class="card" style="width: 17rem;">
+						<img height="150px" src="{{asset('storage/images/products/'.explode(',', $item->img_product)[0])}}" class="card-img-top" alt="...">
+						<div class="card-body">
+						  <h5 class="card-title">{{explode(',', $item->prod_name)[0]}}</h5>
+						  <p style="color: #ee4d2d; font-size: 18px;" class="card-text">{{number_format(explode(',', $item->price)[0],0,',','.')}} đ</p>
+							Số lượng đã bán: {{$item->quantity_sum}}
+						</div>
+					</div>
+				</a>
+				<div style="display: none;">{{$count++}}</div>
+				@endforeach
+			</div>   
 			<h3 style="color: black;">danh sách sản phẩm</h3>
-			<div class="product-list row">
+			<div class="products-list row">
 				@foreach ($news as $item)
 				<a style="margin-left: 12px; margin-bottom: 12px; color: black; text-decoration: none;" href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">
 					<div class="card" style="width: 17rem;">

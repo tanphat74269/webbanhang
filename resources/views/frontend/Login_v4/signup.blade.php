@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<base href="{{asset('./formlogin')}}/">
-	<title>Đăng nhập</title>
+	<title>Đăng ký</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -36,46 +36,52 @@
 				<form class="login100-form validate-form" method="POST">
 					
 					<span class="login100-form-title p-b-49">
-						Login
+						Sign up
 					</span>
+
 					@include('errors.note')
-					{{-- Thông báo sau khi đăng ký thành công --}}
-					@if (session('thongbao')) 
-						<div class="btn">{{session('thongbao')}}</div>
-					@endif
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Email is reauired">
 						<span class="label-input100">Email</span>
 						<input class="input100" type="email" name="email" placeholder="Nhập email" value="{{old('email')}}">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
+
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
 						<input class="input100" type="password" name="password" placeholder="Nhập mật khẩu">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-					<div class="checkbox" style="margin-top: 15px;">
-						<label>
-							<input name="remember" type="checkbox" value="Remember Me">  Remember me
-						</label>
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Confirm Password</span>
+						<input class="input100" type="password" name="confirmpassword" placeholder="Nhập lại mật khẩu">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Name is reauired">
+						<span class="label-input100">Tên khách hàng</span>
+						<input class="input100" type="text" name="name" placeholder="Nhập tên khách hàng" value="{{old('name')}}">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 					<div class="text-right p-t-8 p-b-31">
 						<a href="{{asset('forgotpassword')}}">
 							Quên mật khẩu?
 						</a>
 					</div>
+					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
-								Đăng nhập
+								Đăng ký
 							</button>
 						</div>
 					</div>
+
 					<div class="txt1 text-center p-t-54 p-b-20">
 						<span>
 							Or Sign Up Using
 						</span>
 					</div>
+
 					<div class="flex-c-m">
 						<a href="#" class="login100-social-item bg1">
 							<i class="fa fa-facebook"></i>
@@ -89,13 +95,14 @@
 							<i class="fa fa-google"></i>
 						</a>
 					</div>
+
 					<div class="flex-col-c p-t-155">
 						<span class="txt1 p-b-17">
-							Or Sign Up Using
+							{{-- Or Sign Up Using --}}
 						</span>
 
-						<a href="{{asset('signup')}}" class="txt2">
-							Đăng ký tài khoản mới
+						<a href="{{asset('login')}}" class="txt2">
+							Đăng nhập
 						</a>
 						<a href="{{asset('/')}}">Trở về trang chủ</a>
 					</div>

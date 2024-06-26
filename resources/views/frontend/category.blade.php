@@ -6,7 +6,7 @@
 <div id="wrap-inner">
 	<div class="products">
 		<h3 style="color:black;">{{$cateName->cate_name}}</h3>
-		<div class="product-list row">
+		<div class="products-list row">
 			@foreach ($items as $item)
 				<a style="margin-left: 12px; margin-bottom: 12px; color: black; text-decoration: none;" href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">
 					<div class="card" style="width: 17rem;">

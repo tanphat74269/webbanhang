@@ -9,15 +9,12 @@
 <link href="css/datepicker3.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('./summernote/summernote-lite.min.css')}}">
-
-
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="js/lumino.glyphs.js"></script>
 <script>
 	function changeImg() {
 		let avatar = document.getElementById('avatar');
 		let img = document.getElementById('img');
-
 		avatar.src = URL.createObjectURL(img.files[0]);
 	}
 </script>
@@ -29,8 +26,11 @@
 				<a class="navbar-brand" style="font-size: 18px;" href="{{asset('admin/home')}}">Trang quản lý</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a style="font-size: 16px;" href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"></svg> {{Auth::user()->name}} <span class="caret"></span></a>
+						<a style="font-size: 16px;" href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"></svg> 
+							<img style="width: 35px; height: 35px; border-radius: 50%;" src="{{asset('./storage/images/user/'.Auth::user()->avatar)}}" alt="">
+						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{asset('admin/changepassword')}}"><svg class="glyph stroked cancel"></svg> Đổi mật khẩu</a></li>
 							<li><a href="{{asset('logout')}}"><svg class="glyph stroked cancel"></svg> Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -58,7 +58,6 @@
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-
 	<script src="{{asset('./summernote/summernote-lite.min.js')}}"></script>
 	<script>
 		$('#calendar').datepicker({

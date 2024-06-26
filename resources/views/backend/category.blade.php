@@ -7,7 +7,6 @@
 				<h1 class="page-header">Danh mục sản phẩm</h1>
 			</div>
 		</div><!--/.row-->
-		
 		<div class="row">
 			<div class="col-xs-12 col-md-5 col-lg-5">
 					<div class="panel panel-primary">

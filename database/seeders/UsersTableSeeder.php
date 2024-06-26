@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Quản trị viên',
                 'email'=>'admin@gmail.com',
-                'password'=>bcrypt('quantriwebsite123'),
+                'password'=>bcrypt('quanly'),
                 'avatar' => 'public/asset/img/ceo.png'
             ],
             [

@@ -52,9 +52,6 @@
 							<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
 							<div style="display: none;">{{$count++}}</div>
 						</div>
-						{{-- <div class="form-group">
-							<input class="form-control" type="number" value="{{$item->qty}}" onchange="updateCart(this.value, '{{$item->rowId}}')">
-						</div> --}}
 					</td>
 					<td><span class="">{{number_format($item->price,0,',','.')}} đ</span></td>
 					<td><span class="">{{number_format($item->price*$item->qty,0,',','.')}} đ</span></td>
@@ -62,25 +59,19 @@
 					
 				</tr>
 				@endforeach
-				
 			</table>
 			<div class="row" id="total-price">
 				<div class="col-md-6 col-sm-12 col-xs-12">							
 						{{-- Xu ly chuoi --}}
 						@php
-							// for($i = 0; $i < strlen($total); $i++) {
-							// 	if($total[$i] == ',' || $total[$i] == '.') {
-							// 		unset($total[$i]);
-							// 	}
-							// }
 							$total = str_replace(',', '', $total);
 							$total = str_replace('.', '', $total);
 							$total = substr($total, 0, -1);
 							$total = substr($total, 0, -1);
-							// dd($total);
 						@endphp
 						Tổng tiền: <span class="total-price">{{number_format($total,0,',','.')}} đ</span>																	
-				</div>
+						
+					</div>
 				<div class="col-md-6 col-sm-12 col-xs-12 btn-deleteAll" >
 					<a style="border-radius: 10px; float: right; background: #dc3545;" href="{{asset('cart/delete/all')}}" class="my-btn btn">Xóa tất cả</a>
 				</div>
@@ -90,31 +81,34 @@
 
 	<div id="xac-nhan">
 		<h3 style="color:black;">Xác nhận mua hàng</h3>
+		@if (!empty(Auth::user()->email))
 		<form method="POST">
 			<div class="form-group">
-				<label for="email">Email address:</label>
-				<input required type="email" class="form-control" id="email" name="email">
-			</div>
-			<div class="form-group">
-				<label for="name">Họ và tên:</label>
+				<label for="name">Họ tên:</label>
 				<input required type="text" class="form-control" id="name" name="name">
 			</div>
 			<div class="form-group">
-				<label for="phone">Số điện thoại:</label>
-				<input required type="number" class="form-control" id="phone" name="phone">
+				<label for="sdt">Số điện thoại:</label>
+				<input required type="text" class="form-control" id="phone" name="sdt">
 			</div>
 			<div class="form-group">
 				<label for="add">Địa chỉ:</label>
-				<input required type="text" class="form-control" id="add" name="add">
+				<input required type="text" class="form-control" id="add" name="address">
 			</div>
 			<div class="form-group text-right">
-				<button type="submit" class="btn btn-default">Thực hiện đơn hàng</button>
+				<button style="background: rgb(28, 200, 189); border-radius: 10px; cursor: pointer;" type="submit" class="btn btn-default">Mua hàng</button>
 			</div>
 			{{ csrf_field() }}
 		</form>
 		@else
-		<div style="font-size: 18px; background: rgb(28, 200, 189);" class="btn btn-primary">Không có gì trong giỏ hàng</div>
-		<a style="font-size: 18px; background:rgb(28, 200, 189);" href="{{asset('/')}}" class="btn btn-primary">Trở về trang chủ</a>
+			Vui lòng <a href="{{asset('login')}}">đăng nhập</a> để mua hàng.	
+		@endif
+		
+		@else
+		<div style="margin-bottom: 100px;">
+			<div style="font-size: 18px; background: rgb(28, 200, 189);" class="btn btn-primary">Không có gì trong giỏ hàng</div>
+			<a style="font-size: 18px; background:rgb(28, 200, 189);" href="{{asset('/')}}" class="btn btn-primary">Trở về trang chủ</a>
+		</div>
 		@endif
 	</div>
 </div>

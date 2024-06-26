@@ -12,7 +12,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	<script type="text/javascript">
 		$(function() {
@@ -51,15 +50,7 @@
 			font-size: 22px;
 			text-align: center;
 			line-height: 50px;
-			
-		}
-		.btn-cart-product a {
-			color: black;
-			padding: 14px 49px;
-		}
-		.btn-cart-product a:hover {
-			text-decoration: none;
-			border-radius: 10px;
+			border: 1px solid black;
 		}
 		
 		/* header */
@@ -87,7 +78,7 @@
 			margin-left: 70px;
 		}
 		#header .giohang {
-			margin-left: 180px;
+			margin-left: 80px;
 			
 		}
 
@@ -217,9 +208,16 @@
 		}
 
 		/* hover item */
-		.product-list a:hover {
+		.products-list a:hover {
 			border: 1px solid rgb(233, 111, 12);
 			border-radius: 5px;
+		}
+		.products-list a {
+			border: 2px solid #dfdfdf; 
+			border-radius: 5px;
+		}
+		.products-list {
+			border: none;
 		}
 
 		/* dropdown danh muc */
@@ -276,6 +274,14 @@
 
 
 	</style>
+	<script>
+		function changeImg() {
+			let avatar = document.getElementById('avatar');
+			let img = document.getElementById('img');
+	
+			avatar.src = URL.createObjectURL(img.files[0]);
+		}
+	</script>
 </head>
 <body>    
 	<!-- header -->
@@ -302,6 +308,23 @@
 				</form>
 			</div>
 		</div>
+		@if (!empty(Auth::user()->name))
+			<div class="dropdown">
+				<div class="dropbtn">
+					<img style="width: 35px; height: 35px; border-radius: 50%;" src="{{asset('./storage/images/user/'.Auth::user()->avatar)}}" alt="">
+					<img width="15px" src="{{asset('./storage/images/down.png')}}" alt="">
+				</div>
+				<div class="dropdown-content">				  
+					<a href="{{asset('changename')}}">Đổi tên và avatar</a>
+					<a href="{{asset('changepassword')}}">Đổi mật khẩu</a>
+					<a href="{{asset('orderinfo')}}">Thông tin đơn hàng</a>
+					<a href="{{asset('logout')}}">Đăng xuất</a>
+				</div>
+			</div>	
+		@else 
+			<a style="padding-top: 20px; padding-bottom: 20px; margin-left: 20px;color: black; text-decoration: none; font-size: 18px;" href="{{asset('login')}}">Đăng nhập</a>
+		@endif
+		
 		<div class="giohang item-header">
 			<a style="color:black;" href="{{asset('cart/show')}}"><i class="fa" style="font-size:24px">&#xf07a;</i></a>
 			<span class='badge badge-warning' id='lblCartCount'> {{Cart::count()}} </span>
@@ -312,14 +335,14 @@
 	<!-- main -->
 	<section id="body">
 		<div class="container">
-			
-
 				<div id="main" class="">
+
+
                     @yield('main')
+
 
                     <!-- end main -->
 				</div>
-			
 		</div>
 	</section>
 	<!-- endmain -->
@@ -370,26 +393,20 @@
 
 	{{-- quantity js --}}
 	<script>
-		function changeNumUp(numCart, rowId) {
-			
+		function changeNumUp(numCart, rowId) { Hàm tăng số lượng
 			const numcart = document.querySelector(".numCart-" + numCart);
-
 			let qty = Number(numcart.value);
 			qty++;
 			numcart.value = qty;
-
 			updateCart(Number(numcart.value), rowId);
 		}
 
-		function changeNumDown(numCart, rowId) {
+		function changeNumDown(numCart, rowId) { // Hàm giảm số lượng 
 			const numcart = document.querySelector(".numCart-" + numCart);
-
 			let qty = Number(numcart.value);
-		
 			if(qty > 1) {
 				qty--;
 				numcart.value = qty;
-
 				updateCart(Number(numcart.value), rowId)
 			}	
 		}

@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
-class AddCateRequest extends FormRequest
+
+class AddUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,16 +23,18 @@ class AddCateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            'name'=>'unique:categories,cate_name'
+            'email'=>'unique:web_users,email',
+            'confirmpassword'=>'same:password',
         ];
     }
 
     public function messages() {
         return [
-            'name.unique'=>'Tên danh mục đã có trong trang web. Vui lòng chọn tên khác!'
+            'email.unique'=>'Email đã có trong trang web. Vui lòng chọn email khác!',
+            'confirmpassword.same' => 'Mật khẩu nhập lại không trùng khớp'
         ];
     }
 }

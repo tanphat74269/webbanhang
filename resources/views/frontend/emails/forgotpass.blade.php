@@ -1,0 +1,1 @@
+Vui lòng nhấp vào đường link để thay đổi mật khẩu mới cho tài khoản {{$email}}: http://127.0.0.1:8000/newpassword/{{$random}}

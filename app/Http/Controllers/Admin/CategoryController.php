@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Models\Category;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use App\Http\Requests\AddCateRequest;
 use App\Http\Requests\EditCateRequest;
@@ -18,7 +18,6 @@ class CategoryController extends Controller
 
     public function postCate(AddCateRequest $request) {
         $category = new Category;
-        // dd($request->name);
         $category->cate_name = $request->name;
         $category->cate_slug = Str::slug($request->name);
         $category->save();

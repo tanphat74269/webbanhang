@@ -10,10 +10,10 @@
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-8">
-				
 				<div class="panel panel-primary">
 					<div class="panel-heading">Thêm sản phẩm</div>
 					<div class="panel-body">
+						{{-- Thông báo lỗi --}}
 						@include('errors.note')
 						<form method="post" enctype="multipart/form-data">
 							<div class="row" style="margin-bottom:40px">
@@ -29,7 +29,7 @@
 									<div class="form-group" >
 										<label>Ảnh sản phẩm</label>
 										<input required id="img" type="file" name="img" class="form-control" onchange="changeImg(this)">
-					                    <img id="avatar" class="thumbnail" width="300px">
+					                    <img id="avatar" class="thumbnail" height="300px" width="300px" src="{{asset('./storage/images/products/anhsanpham.png')}}">
 									</div>
 									
 									<div class="form-group" >
@@ -44,7 +44,6 @@
 											@endforeach
 					                    </select>
 									</div>
-									
 									<input type="submit" name="submit" value="Thêm" class="btn btn-primary">
 									<a href="{{asset('admin/product')}}" class="btn btn-danger">Hủy bỏ</a>
 								</div>

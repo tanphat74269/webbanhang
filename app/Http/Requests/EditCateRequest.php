@@ -28,7 +28,7 @@ class EditCateRequest extends FormRequest
         ];
     }
 
-    public function message() {
+    public function messages() {
         return [
             'name.unique'=>'Tên danh mục đã có trong trang web. Vui lòng chọn tên khác!'
         ];

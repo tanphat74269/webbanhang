@@ -20,7 +20,10 @@ class Orders extends Migration
 
             $table->integer('order_user')->unsigned();
             $table->integer('order_product')->unsigned();
-
+            $table->string('address');
+            $table->string('sdt');
+            $table->string('name_customer');
+            $table->string('ngaymua');
             $table->foreign('order_user')
                   ->references('id')
                   ->on('web_users')
