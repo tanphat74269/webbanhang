@@ -2,7 +2,19 @@
 @section('title', 'Chi tiết sản phẩm')
 @section('main')
 <link rel="stylesheet" href="css/details.css">
-
+<style>
+	#button-downup {
+		border-radius: 2px; 
+		border: 1px solid #d0d0d0; 
+		cursor: pointer; 
+		padding: 2.5px 15px;
+	}
+	#comment-image {
+		width: 35px; 
+		height: 35px; 
+		border-radius: 50%;
+	}
+</style>
 <div id="wrap-inner" style="margin-left: 75px;">
 	<div id="product-infomation">
 		<div class="prod-image item-prod">
@@ -17,9 +29,9 @@
 			@endphp
 			<form action="{{asset('cart/add/'.$item->prod_id)}}" method="POST">
 				<div class="quatity-number">
-					<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
+					<span id="button-downup" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
 					<input name="qty" style="text-align: center; width: 80px;" type="text" class="numCart-{{$count}}" value="1"></input>
-					<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
+					<span id="button-downup" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
 				</div>
 				{{ csrf_field() }}
 				<button style="margin-top: 20px; cursor: pointer;" class="btn-cart-product" type="submit">Thêm Vào Giỏ Hàng</button>	
@@ -57,7 +69,7 @@
 		@foreach ($commentslist as $comment)
 		<ul >
 			<li style="font-size: 20px; color: black;" class="" style="color: black; font-size: 20px;">
-				<img style="width: 35px; height: 35px; border-radius: 50%;" src="{{asset('./storage/images/user/'.$comment->avatar)}}" alt="">
+				<img id="comment-image" src="{{asset('./storage/images/user/'.$comment->avatar)}}" alt="">
 				{{$comment->name}}
 				<br>
 				<span style="color:#a07e7eb9">{{$arrDate[$count++]}}</span>	

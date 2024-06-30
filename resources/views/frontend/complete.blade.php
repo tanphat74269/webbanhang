@@ -3,12 +3,10 @@
 @section('main')
 <link rel="stylesheet" href="css/complete.css">
 
-<div id="wrap-inner">
+<div id="wrap-inner" style="margin-bottom: 150px;">
 	<div style="font-size: 20px; color: black;">
-		Khách hàng đã đặt hàng thành công. 
-		Sẽ có người giao hàng cho qúy khách trong vòng 1 ngày. <br>
-		Quý khách vui lòng giữ điện thoại bên mình để shipper thuận tiện hơn trong việc giao hàng. <br>
-		Chúc quý khách một ngày vui vẻ.
+		Khách hàng đã đặt hàng thành công. Bên công ty sẽ gọi điện đến khách hàng để xác nhận.
+		Cảm ơn quý khách đã đặt hàng.
 	</div>
 	<a style="font-size:20px; margin-top: 30px;" href="{{asset('/')}}">Quay lại trang chủ</a>
 </div>	

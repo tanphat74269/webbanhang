@@ -33,6 +33,20 @@
 		});
 	</script>
 	<style>
+		#login-button {
+			padding-top: 20px; 
+			padding-bottom: 20px; 
+			margin-left: 20px;
+			color: black; 
+			text-decoration: none; 
+			font-size: 18px;
+		}
+		#item-cart-grid {
+			margin-left: 12px; 
+			margin-bottom: 12px; 
+			color: black; 
+			text-decoration: none;
+		}
 		/* detail */
 		.product-information {
 			width: 1136px;
@@ -322,7 +336,7 @@
 				</div>
 			</div>	
 		@else 
-			<a style="padding-top: 20px; padding-bottom: 20px; margin-left: 20px;color: black; text-decoration: none; font-size: 18px;" href="{{asset('login')}}">Đăng nhập</a>
+			<a id="login-button" href="{{asset('login')}}">Đăng nhập</a>
 		@endif
 		
 		<div class="giohang item-header">
@@ -393,7 +407,7 @@
 
 	{{-- quantity js --}}
 	<script>
-		function changeNumUp(numCart, rowId) { Hàm tăng số lượng
+		function changeNumUp(numCart, rowId) { //Hàm tăng số lượng
 			const numcart = document.querySelector(".numCart-" + numCart);
 			let qty = Number(numcart.value);
 			qty++;

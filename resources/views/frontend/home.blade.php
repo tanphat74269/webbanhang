@@ -46,8 +46,8 @@
 						break;
 					@endphp
 				@endif
-				<a style="margin-left: 12px; margin-bottom: 12px; color: black; text-decoration: none;" href="{{asset('detail/'.explode(',', $item->prod_id)[0].'/'.explode(',', $item->prod_slug)[0].'.html')}}">
-					<div class="card" style="width: 17rem;">
+				<a id="item-cart-grid" href="{{asset('detail/'.explode(',', $item->prod_id)[0].'/'.explode(',', $item->prod_slug)[0].'.html')}}">
+					<div class="" style="width: 17rem;">
 						<img height="150px" src="{{asset('storage/images/products/'.explode(',', $item->img_product)[0])}}" class="card-img-top" alt="...">
 						<div class="card-body">
 						  <h5 class="card-title">{{explode(',', $item->prod_name)[0]}}</h5>
@@ -62,8 +62,8 @@
 			<h3 style="color: black;">danh sách sản phẩm</h3>
 			<div class="products-list row">
 				@foreach ($news as $item)
-				<a style="margin-left: 12px; margin-bottom: 12px; color: black; text-decoration: none;" href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">
-					<div class="card" style="width: 17rem;">
+				<a id="item-cart-grid" href="{{asset('detail/'.$item->prod_id.'/'.$item->prod_slug.'.html')}}">
+					<div class="" style="width: 17rem;">
 						<img height="150px" src="{{asset('storage/images/products/'.$item->img)}}" class="card-img-top" alt="...">
 						<div class="card-body">
 						  <h5 class="card-title">{{$item->prod_name}}</h5>

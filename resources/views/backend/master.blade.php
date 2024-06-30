@@ -18,6 +18,14 @@
 		avatar.src = URL.createObjectURL(img.files[0]);
 	}
 </script>
+<style>
+	.sidebar-css {
+		border-top: 1px solid rgb(230, 223, 223);
+	}
+	.color-black {
+		color: black;
+	}
+</style>
 </head>
 <body>
 	<nav style="background: #337ab7;" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -42,9 +50,9 @@
 		
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="background: rgb(245, 247, 245);">
 		<ul style="font-size: 18px; margin-top: 40px;" class="nav menu">
-			<li style="border-top: 1px solid rgb(230, 223, 223);"><a style="color: rgba(0, 0, 0, 0.689);" href="{{asset('admin/home')}}"><svg class="glyph stroked dashboard-dial"></svg> Trang chủ</a></li>
-			<li style="border-top: 1px solid rgb(230, 223, 223);"><a style="color: rgba(0, 0, 0, 0.689);" href="{{asset('admin/category')}}"><svg class="glyph stroked line-graph"></svg> Danh mục</a></li>
-			<li style="border-top: 1px solid rgb(230, 223, 223);"><a style="color: rgba(0, 0, 0, 0.689);" href="{{asset('admin/product')}}"><svg class="glyph stroked calendar"></svg> Sản phẩm</a></li>
+			<li class="sidebar-css"><a class="color-black" href="{{asset('admin/home')}}"><svg class="glyph stroked dashboard-dial"></svg> Thống kê</a></li>
+			<li class="sidebar-css"><a class="color-black" href="{{asset('admin/category')}}"><svg class="glyph stroked line-graph"></svg> Danh mục</a></li>
+			<li class="sidebar-css"><a class="color-black" href="{{asset('admin/product')}}"><svg class="glyph stroked calendar"></svg> Sản phẩm</a></li>
 		</ul>
 		
 	</div><!--/.sidebar-->

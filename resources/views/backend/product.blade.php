@@ -24,7 +24,6 @@
 											<th width="12%">Giá sản phẩm</th>
 											<th width="13%">Ảnh sản phẩm</th>
 											<th width="10%">Danh mục</th>
-											{{-- <th style="text-align: center;">Mô tả sản phẩm</th> --}}
 											<th width="3%" style="text-align: center;">Sửa</th>
 											<th width="3%" style="text-align: center;">Xóa</th>
 										</tr>

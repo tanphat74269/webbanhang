@@ -47,7 +47,7 @@
 			                    		<a href="{{asset('admin/category/edit/'.$cate->cate_id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a>
 			                    	</td>
 									<td>
-										<a href="{{asset('admin/category/delete/'.$cate->cate_id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+										<a href="{{asset('admin/category/delete/'.$cate->cate_id)}}" onclick="return confirm('Nếu xóa 1 danh mục thì tất cả sản phẩm trong danh mục đó cũng bị xóa. Bạn có muốn xóa không?')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 									</td>		
 			                  	</tr>
 			                  	@endforeach

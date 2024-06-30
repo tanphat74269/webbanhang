@@ -70,7 +70,7 @@ class FrontendController extends Controller
 
     public function getSearch(Request $request) {
         $data['keyword'] = $request->result;
-        $result = str_replace(' ', '%', $result);
+        $result = str_replace(' ', '%', $request->result);
         $data['items'] = Product::where('prod_name', 'like', '%'.$result.'%')->paginate(8);
         return view('frontend.search', $data);
     }

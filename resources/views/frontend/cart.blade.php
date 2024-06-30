@@ -7,6 +7,26 @@
 		color: white;
 		opacity: 0.9;
 	}
+	#btn-downup {
+		border-radius: 2px; 
+		border: 1px solid #d0d0d0; 
+		cursor: pointer; 
+		padding: 2.5px 15px;
+	}
+	#btn-delete-cart-my {
+		border-radius: 10px; 
+		float: right; 
+		background: #dc3545;
+	}
+	#btn-muahang {
+		background: rgb(28, 200, 189); 
+		border-radius: 10px; 
+		cursor: pointer;
+	}
+	#frontend-btn {
+		font-size: 18px; 
+		background: rgb(28, 200, 189);
+	}
 </style>
 <script>
 	function updateCart(qty, rowId) {
@@ -47,9 +67,9 @@
 								B3: Viết mã javascript để triển khai onclick
 								--}}
 						<div class="quatity-number">
-							<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
+							<span id="btn-downup" class="minus-{{$count}}" onclick="changeNumDown({{$count}}, '{{$item->rowId}}')">-</span>
 							<input style="text-align: center; width: 80px;" disabled type="text" class="numCart-{{$count}}" value="{{$item->qty}}"></input>
-							<span style="border-radius: 2px; border: 1px solid #d0d0d0; cursor: pointer; padding: 2.5px 15px;" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
+							<span id="btn-downup" class="plus-{{$count}}" onclick="changeNumUp({{$count}}, '{{$item->rowId}}')">+</span>
 							<div style="display: none;">{{$count++}}</div>
 						</div>
 					</td>
@@ -73,7 +93,7 @@
 						
 					</div>
 				<div class="col-md-6 col-sm-12 col-xs-12 btn-deleteAll" >
-					<a style="border-radius: 10px; float: right; background: #dc3545;" href="{{asset('cart/delete/all')}}" class="my-btn btn">Xóa tất cả</a>
+					<a id="btn-delete-cart-my" href="{{asset('cart/delete/all')}}" class="my-btn btn">Xóa tất cả</a>
 				</div>
 			</div>
 		</form>             	                	
@@ -96,7 +116,7 @@
 				<input required type="text" class="form-control" id="add" name="address">
 			</div>
 			<div class="form-group text-right">
-				<button style="background: rgb(28, 200, 189); border-radius: 10px; cursor: pointer;" type="submit" class="btn btn-default">Mua hàng</button>
+				<button id="btn-muahang" type="submit" class="btn btn-default">Mua hàng</button>
 			</div>
 			{{ csrf_field() }}
 		</form>
@@ -106,8 +126,8 @@
 		
 		@else
 		<div style="margin-bottom: 100px;">
-			<div style="font-size: 18px; background: rgb(28, 200, 189);" class="btn btn-primary">Không có gì trong giỏ hàng</div>
-			<a style="font-size: 18px; background:rgb(28, 200, 189);" href="{{asset('/')}}" class="btn btn-primary">Trở về trang chủ</a>
+			<div id="frontend-btn" class="btn btn-primary">Không có gì trong giỏ hàng</div>
+			<a id="frontend-btn" href="{{asset('/')}}" class="btn btn-primary">Trở về trang chủ</a>
 		</div>
 		@endif
 	</div>
